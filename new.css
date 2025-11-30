@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+   background: ghostwhite; 
+
+}
+.conatiner{
+    display: block;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-padding: 20px;
+    justify-content: center;
+    align-items: center;
+    max-height: 1200px;
+    height: 100%;
+    gap: 50px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+.conatiner .card{
+    display: inline;
+    background: rgb(175, 39, 61);
+    box-shadow: 0 60px 50px black;
+    scroll-snap-align: start;
+    text-align: center;
+    height:150px;
+    width: 150px;
+
+
+}
+.card img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+
+    border: 3px solid rgb(139, 31, 130);
+}

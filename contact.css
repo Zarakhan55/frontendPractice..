@@ -1,0 +1,80 @@
+
+
+
+
+
+
+
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins","Segoe UI",sans-serif}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgb(148, 165, 54);
+  color:rgb(80, 21, 21);
+  padding:30px;
+}
+
+.icon-row{
+  display:flex;
+  gap:10px;                
+  align-items:center;
+  justify-content:center;
+  max-width:1000px;
+  overflow:auto;           
+  padding:10px;
+}
+
+.profile {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  width:110px;            
+  flex:0 0 auto;          
+}
+
+.icon-box {
+  width:60px;
+  height:60px;
+  border-radius:12px;    
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgb(102, 102, 34);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.profile:hover .icon-box{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.6), 0 0 18px rgba(0,180,216,0.06);
+}
+
+/* icon image inside box */
+.icon-box img{
+  width:46px;   
+  height:46px;
+  object-fit:cover;
+  display:block;
+}
+
+.label {
+  font-size:13px;
+  color:rgb(78, 19, 19);
+  text-align:center;
+  text-transform:capitalize;
+  letter-spacing:0.3px;
+}
+
+/* responsive spacing */
+@media (max-width:480px){
+  .profile{ width:84px; gap:8px }
+  .icon-box{ width:60px; height:60px }
+  .icon-box img{ width:36px; height:36px }
+  .label{ font-size:12px }
+}

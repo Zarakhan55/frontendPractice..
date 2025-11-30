@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar-1</title>
+  <link rel="stylesheet" href="w.css">
+</head>
+<body>
+  <nav>
+    <!-- Sidebar (for mobile) -->
+    <ul class="sidebar">
+      <li onclick="closeSidebar()"><a href="#">✕</a></li>
+      <li><a href="#home">MY-WEB</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#login">Login</a></li>
+    </ul>
+
+    <!-- Main Navbar -->
+    <ul class="navbar">
+      <li><a href="#home">MY-WEB</a></li>
+      <li class="hideOnMobile"><a href="#blog">Blog</a></li>
+      <li class="hideOnMobile"><a href="#product">Product</a></li>
+      <li class="hideOnMobile"><a href="#about">About</a></li>
+      <li class="hideOnMobile"><a href="#login">Login</a></li>
+      <li class="menu" onclick="openSidebar()"><a href="#">☰</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero section-->
+  <div class="hero">
+    <h1>Hello Explore new things</h1>
+    <div class="btn">
+      <input type="text" placeholder="Explore more">
+      <button>explore</button>
+    </div>
+
+  </div>
+
+  <!-- boxes -->
+  <div class="transform-box">
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+    <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+  <div class="card">Hover Me</div>
+
+</div>
+  
+  <script>
+    function openSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'flex';
+    }
+
+    function closeSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

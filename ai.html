@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Teddy Bar — Birthday Gifts</title>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#fff6f8;
+    --bg2:#fdeffa;
+    --accent:#ff6b81;
+    --accent-2:#ffd166;
+    --card:#fff;
+    --muted:#6b6b7a;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+    margin:0;
+    background: linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:#222;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* NAVBAR */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
+    z-index:20;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  }
+  .logo{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    font-family: "Comfortaa", cursive;
+    font-weight:700;
+    font-size:20px;
+    color:var(--accent);
+  }
+  .logo .badge{
+    width:44px;height:44px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),#ff9aa2);
+    display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+    box-shadow:0 6px 18px rgba(255,107,129,0.2);
+  }
+  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+  nav a{color:#333;text-decoration:none;font-weight:600;opacity:0.9}
+  nav a.cta{
+    background:linear-gradient(90deg,var(--accent),#ff8fa2);
+    color:white;padding:10px 14px;border-radius:12px;
+    box-shadow:0 8px 20px rgba(255,107,129,0.18);
+  }
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:center;
+    padding:54px 6vw;
+    min-height:66vh;
+  }
+  .hero-left h1{
+    font-family:"Comfortaa",cursive;
+    font-size:44px;
+    margin:0 0 10px;
+    color:#333;
+  }
+  .hero-left p{color:var(--muted); margin:0 0 22px; font-size:16px}
+  .hero-left .btns{display:flex;gap:14px}
+  .btn{
+    padding:12px 18px;border-radius:12px;font-weight:700;border:0;cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  }
+  .btn.primary{ background:linear-gradient(90deg,var(--accent),#ff8fa2); color:white; }
+  .btn.ghost{ background:transparent; border:2px solid rgba(0,0,0,0.06); color:#333; }
+
+  /* hero teddy card */
+  .teddy-card{
+    background:linear-gradient(180deg,#fff,#fff0f4);
+    border-radius:22px;padding:22px;box-shadow:0 18px 40px rgba(0,0,0,0.08);
+    position:relative; overflow:visible;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .teddy-card img{width:180px; transform:translateY(-10px); animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%{transform:translateY(-10px)}50%{transform:translateY(6px)}100%{transform:translateY(-10px)}}
+
+  .price{ margin-top:6px;color:var(--muted); font-weight:700}
+  .ribbon{margin-top:14px; padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),#ffd7a6); font-weight:700}
+
+  /* CARDS */
+  .cards{
+    padding:30px 6vw 80px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--card); padding:18px;border-radius:16px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.06); text-align:center; transition:transform .28s ease, box-shadow .28s ease;
+  }
+  .card:hover{ transform:translateY(-10px); box-shadow:0 22px 48px rgba(0,0,0,0.12) }
+  .card img{width:90px;height:90px;object-fit:contain;margin-bottom:12px}
+  .card h3{margin:8px 0 6px;font-size:18px;color:#333}
+  .card p{color:var(--muted); font-size:14px;margin:0 0 12px}
+  .card .small{font-size:13px;color:#999}
+
+  /* CONFETTI */
+  .confetti{
+    position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:5;
+  }
+  .confetti .piece{
+    position:absolute;width:10px;height:14px;opacity:0.95; transform:translateY(-50px);
+    animation:fall 3.2s linear infinite;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(-20vh) rotate(0) }
+    100%{ transform:translateY(120vh) rotate(720deg) }
+  }
+
+  /* MODAL (build gift) */
+  .modal-backdrop{ position:fixed;inset:0;background:rgba(0,0,0,0.36);display:none;align-items:center;justify-content:center;z-index:40}
+  .modal{width:92%;max-width:640px;background:white;padding:22px;border-radius:14px;box-shadow:0 22px 60px rgba(0,0,0,0.25)}
+  .modal h2{font-family:"Comfortaa",cursive;margin:0 0 12px}
+  .options{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .opt{ padding:10px 12px;border-radius:10px;border:2px solid transparent; cursor:pointer; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+  .opt.selected{ border-color:var(--accent-2); box-shadow:0 18px 34px rgba(255,193,93,0.12)}
+  .row{display:flex;gap:12px;align-items:center}
+
+  /* responsive */
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr; padding:40px 6vw}
+    .teddy-card{margin-top:18px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="badge">TB</div>
+    <div>
+      <div style="font-size:14px">Teddy Bar</div>
+      <div style="font-size:11px;color:#8b8b95;margin-top:2px">Gifts & Hugs</div>
+    </div>
+  </div>
+
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Teddies</a></li>
+    <li><a href="#">Boxes</a></li>
+    <li><a href="#">Custom</a></li>
+    <li><a class="cta" id="openBuilder" href="javascript:;">🎁 Build Your Gift</a></li>
+  </ul>
+</nav>
+
+<!-- CONFETTI CANVAS (CSS pieces) -->
+<div class="confetti" id="confettiArea"></div>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>Make birthdays extra cuddly 🎈</h1>
+    <p>Choose a teddy, add a ribbon & a message — we pack it with care and deliver the smiles. Pick a preset or build a special combo for your loved one.</p>
+    <div class="btns">
+      <button class="btn primary" id="openBuilder2">Create Gift</button>
+      <button class="btn ghost" onclick="scrollToCards()">Explore Teddies</button>
+    </div>
+
+    <div style="margin-top:22px;display:flex;gap:10px">
+      <div style="background:#fff;padding:10px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
+        <strong>Free wrap</strong><div style="font-size:12px;color:#777">for birthday orders</div>
+      </div>
+      <div style="background:#fff;padding:10px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
+        <strong>Same-day</strong><div style="font-size:12px;color:#777">local delivery</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teddy-card" aria-hidden="true">
+    <img src="https://i.postimg.cc/T1y4Hq7c/cute-teddy.png" alt="teddy">
+    <div style="text-align:center">
+      <div style="font-weight:800;font-size:18px">Classic Honey Teddy</div>
+      <div class="price">From <strong>₹999</strong></div>
+      <div class="ribbon">Birthday Special 🎉</div>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="cards">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="">
+    <h3>Mini Teddy</h3>
+    <p>Small & squeezable — ideal for kids and pocket hugs.</p>
+    <div class="small">₹599 · gift box + ribbon</div>
+  </div>
+
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995580.png" alt="">
+    <h3>Classic Teddy</h3>
+    <p>Soft plush, classic look — the warm favorite.</p>
+    <div class="small">₹999 · custom ribbon</div>
+  </div>
+
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995583.png" alt="">
+    <h3>Giant Teddy</h3>
+    <p>Big & snuggly—for grand surprises and room decor.</p>
+    <div class="small">₹2499 · includes box</div>
+  </div>
+
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616554.png" alt="">
+    <h3>Surprise Box</h3>
+    <p>Pick a teddy + candy + card — bundled with confetti!</p>
+    <div class="small">₹1299 · add message</div>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:26px 6vw;color:#555;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.6))">
+  © 2025 Teddy Bar — made with ❤️
+</footer>
+
+<!-- Build modal -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Build your gift">
+    <h2>🎁 Build Your Birthday Gift</h2>
+    <div style="margin-bottom:10px;color:var(--muted)">Choose teddy</div>
+    <div class="options" id="teddyOptions">
+      <div class="opt selected" data-val="Mini Teddy">Mini</div>
+      <div class="opt" data-val="Classic Teddy">Classic</div>
+      <div class="opt" data-val="Giant Teddy">Giant</div>
+    </div>
+
+    <div style="margin-top:8px;margin-bottom:10px;color:var(--muted)">Choose ribbon</div>
+    <div class="options" id="ribbonOptions">
+      <div class="opt selected" data-val="Pink Ribbon">Pink</div>
+      <div class="opt" data-val="Gold Ribbon">Gold</div>
+      <div class="opt" data-val="Blue Ribbon">Blue</div>
+    </div>
+
+    <div style="margin-top:10px">
+      <div style="margin-bottom:6px;color:var(--muted)">Personal message</div>
+      <textarea id="message" placeholder="Write a short birthday message..." style="width:100%;padding:10px;border-radius:10px;border:1px solid #eee;font-size:14px"></textarea>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:14px">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" id="confirmBuild">Pack & Celebrate 🎉</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // create some confetti pieces in the background
+  const confettiArea = document.getElementById('confettiArea');
+  const colors = ['#ff7aa2','#ffd166','#8bd3ff','#ffd1f0','#c4ffb2'];
+  for(let i=0;i<26;i++){
+    const div = document.createElement('div');
+    div.className='piece';
+    div.style.left = Math.random()*100 + 'vw';
+    div.style.top = (-10 - Math.random()*30) + 'vh';
+    div.style.background = colors[i % colors.length];
+    div.style.width = 6 + Math.random()*12 + 'px';
+    div.style.height = 10 + Math.random()*16 + 'px';
+    div.style.borderRadius = (Math.random()>0.5? '2px':'50%');
+    div.style.opacity = 0.9;
+    div.style.animationDelay = (Math.random()*2) + 's';
+    div.style.animationDuration = (2.4 + Math.random()*2.4) + 's';
+    confettiArea.appendChild(div);
+  }
+
+  // modal open/close
+  const modal = document.getElementById('modal');
+  function openModal(){ modal.style.display='flex'; }
+  function closeModal(){ modal.style.display='none'; }
+  document.getElementById('openBuilder').addEventListener('click',openModal);
+  document.getElementById('openBuilder2').addEventListener('click',openModal);
+
+  // option selection
+  function setupOptions(containerId){
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.opt').forEach(opt=>{
+      opt.addEventListener('click', ()=> {
+        container.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+  }
+  setupOptions('teddyOptions');
+  setupOptions('ribbonOptions');
+
+  // confirm build -> small celebratory animation (confetti burst)
+  document.getElementById('confirmBuild').addEventListener('click', ()=>{
+    const teddy = document.querySelector('#teddyOptions .opt.selected').dataset.val;
+    const ribbon = document.querySelector('#ribbonOptions .opt.selected').dataset.val;
+    const msg = document.getElementById('message').value || '—';
+    closeModal();
+
+    // small browser notification-styled card
+    const box = document.createElement('div');
+    box.style.position='fixed';
+    box.style.right='20px';
+    box.style.bottom='20px';
+    box.style.padding='14px 16px';
+    box.style.background='white';
+    box.style.borderRadius='12px';
+    box.style.boxShadow='0 16px 40px rgba(0,0,0,0.16)';
+    box.innerHTML = `<strong>🎉 Packed!</strong><div style="font-size:13px;color:#666;margin-top:6px">${teddy} with ${ribbon}<div style="font-size:12px;color:#999;margin-top:6px">Msg: ${msg}</div></div>`;
+    document.body.appendChild(box);
+    setTimeout(()=> box.animate([{opacity:1},{opacity:0}],{duration:1400,fill:'forwards'}).onfinish=()=>box.remove(), 2200);
+
+    // quick confetti burst
+    burstConfetti();
+  });
+
+  function burstConfetti(){
+    for(let i=0;i<20;i++){
+      const c = document.createElement('div');
+      c.className='piece';
+      c.style.left = (40 + Math.random()*20) + 'vw';
+      c.style.top = (30 + Math.random()*10) + 'vh';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.width = 6 + Math.random()*10 + 'px';
+      c.style.height = 10 + Math.random()*16 + 'px';
+      c.style.borderRadius = Math.random()>0.5 ? '2px' : '50%';
+      c.style.animation = `burst ${(800 + Math.random()*700)}ms linear forwards`;
+      c.style.opacity = 1;
+      document.body.appendChild(c);
+      setTimeout(()=> c.remove(), 1400);
+    }
+  }
+
+  // burst animation keyframes appended dynamically
+  const style = document.createElement('style');
+  style.innerHTML = `@keyframes burst {
+    0%{ transform:translateY(0) translateX(0) rotate(0); opacity:1 }
+    100%{ transform:translateY(-240px) translateX(${(Math.random()>0?200:-200)}px) rotate(540deg); opacity:0 }
+  }`;
+  document.head.appendChild(style);
+
+  function scrollToCards(){ document.getElementById('cards').scrollIntoView({behavior:'smooth'}) }
+</script>
+</body>
+</html>

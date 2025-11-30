@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Navbar & Cards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+      min-height: 100vh;
+    }
+
+    /* 🌈 NAVBAR */
+    nav {
+      background-color: #1e293b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav h1 {
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+
+    /* 🃏 CARD SECTION */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 60px 80px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #475569;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #1e293b;
+      background-color: rgba(255, 255, 255, 0.4);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌈 NAVBAR -->
+  <nav>
+    <h1>MyCreativeSite</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🃏 CARDS SECTION -->
+  <div class="card-container">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Design">
+      <h2>Web Design</h2>
+      <p>Beautiful, responsive, and modern website layouts built with passion.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2721/2721291.png" alt="Development">
+      <h2>Development</h2>
+      <p>Powerful frontend & backend development with latest technologies.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Support">
+      <h2>24/7 Support</h2>
+      <p>Dedicated team providing assistance and maintenance around the clock.</p>
+    </div>
+  </div>
+
+  <!-- 🌟 FOOTER -->
+  <footer>
+    © 2025 MyCreativeSite | Designed by <b>You 😎</b>
+  </footer>
+
+</body>
+</html>
