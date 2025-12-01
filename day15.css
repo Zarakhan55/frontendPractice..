@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.text h1 {
+  font-size: 40px;
+  color: #333;
+}
+
+.text p {
+  font-size: 18px;
+  margin: 15px 0;
+  color: #555;
+}
+
+button {
+  padding: 12px 25px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover {
+  background: #3e8e41;
+}
+
+.image img {
+  width: 350px;
+  border-radius: 10px;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.image img:hover {
+  transform: translateX(-10px);
+  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
+} 
+/* ---------- Responsive (Tablets) ---------- */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image img {
+    width: 300px;
+  }
+
+  .text h1 {
+    font-size: 32px;
+  }
+}
+
+/* ---------- Mobile Phones ---------- */
+@media (max-width: 600px) {
+  .hero {
+    padding: 20px;
+  }
+
+  .image img {
+    width: 250px;
+  }
+
+  .text h1 {
+    font-size: 28px;
+  }
+
+  .text p {
+    font-size: 16px;
+  }
+}
