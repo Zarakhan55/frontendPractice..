@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+nav{
+    background-color: rgb(14, 32, 70);
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.3);
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav li {
+  height: 55px;
+}
+
+nav a {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+nav a:hover{
+    background-color: green;
+}
+
+nav li:first-child {
+  margin-right: auto;
+}
+
+/* ------------------- SIDEBAR ------------------- */
+
+.sidebar{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999;
+    background-color: rgb(14, 32, 70);
+    backdrop-filter: blur(10px);
+    padding-top: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  padding: 15px 20px;
+  animation: fadeLinks 0.5s ease forwards;
+}
+
+.sidebar a:hover {
+  background-color: green;
+}
+
+/* --------------- MENU BUTTON ---------------- */
+
+.menu {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------
+      ANIMATIONS (Smooth & Professional)
+------------------------------------------- */
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 🔥 Missing Animation (Added Now) */
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Link fade animation */
+@keyframes fadeLinks {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* End of 16.css */

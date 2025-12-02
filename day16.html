@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="16.css">
+    <title>Document</title>
+</head>
+<body>
+
+  <nav>
+    <!-- Sidebar (for mobile) -->
+    <ul class="sidebar" id="sidebar">
+      <li onclick="closeSidebar()"><a href="#">✕</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#login">Login</a></li>
+    </ul>
+
+    <!-- Main Navbar -->
+    <ul class="navbar">
+      <li><a href="#home">MY-WEB</a></li>
+      <li class="hideOnMobile"><a href="#blog">Blog</a></li>
+      <li class="hideOnMobile"><a href="#product">Product</a></li>
+      <li class="hideOnMobile"><a href="#about">About</a></li>
+      <li class="hideOnMobile"><a href="#login">Login</a></li>
+      <li class="menu" onclick="openSidebar()"><a href="#">☰</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function openSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.display = "flex";
+      sidebar.style.animation = "slideIn 0.45s ease forwards";
+    }
+
+    function closeSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.animation = "slideOut 0.45s ease forwards";
+
+      setTimeout(() => {
+        sidebar.style.display = "none";
+      }, 400);
+    }
+  </script>
+
+</body>
+</html>
