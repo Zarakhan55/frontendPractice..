@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.loader span {
+  width: 80px;
+  height: 80px;
+  background: yellow;
+  border-radius: 50%;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 0.6s infinite alternate ease-in-out;
+}
+
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+.loader span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-25px); }
+}
+
+@media (max-width: 600px) {
+  .loader span {
+    width: 50px;
+    height: 50px;
+    background: violet;
+    border-radius: 30%;
+    font-size: 25px;
+  }
+}
+/* End of 19.css */
