@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 22 Loader</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            background: #eef3ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .loader{
+            width: 80px;
+            height: 80px;
+            border: 8px solid #4CAF50;
+            /* border-top-color: transparent; */
+            border-radius: 10px;
+            animation: rotate 1s linear infinite;
+        }
+
+        @keyframes rotate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile responsive */
+        @media(max-width:600px){
+            .loader{
+                width: 60px;
+                height: 60px;
+                border-width: 6px;
+                border-radius: 8px;
+                border-color: red;
+                border-top-color: transparent;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="loader"></div>
+
+</body>
+</html>
