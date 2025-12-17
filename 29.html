@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="text">Hello Friend</h1>
+    <button  id="btn">Click me</button>
+    <script>
+        let text = document.getElementById("text");
+        let btn = document.getElementById("btn");
+        btn.addEventListener("dblclick",function(){
+            text.innerHTML = "You have changed the text using Event Listener";
+            text.style.color = "blue";
+            text.style.fontSize = "40px";
+            text.style.backgroundColor = "yellow";
+        });
+
+    </script>
+</body>
+</html>
