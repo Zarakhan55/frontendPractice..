@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+               height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f6ff;
+            font-family: Arial, sans-serif;
+
+        }
+        .box{
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .box:hover .inc, .box:hover .reset{
+            background: rgb(104, 104, 176);
+            color: white;
+        }
+        #count{
+            font-size: 50px;
+            margin: 20px 0;
+            color: #e40d0d;
+        }
+        .inc, .reset{
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            background: rgb(144, 144, 216);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+         <h1 id="count">0</h1>
+    <button class="inc" id="increase">Increase</button>
+    <button class="reset" id="reset">Reset</button>
+    </div>
+    <script>
+        let count =0;
+        let countEl = document.getElementById('count');
+        let incBtn = document.getElementById('increase');
+        let resetBtn = document.getElementById('reset');
+
+        incBtn.addEventListener('click',function(){
+            count++;
+            countEl.textContent = count;
+            countEl.style.color="green";
+
+        });
+        resetBtn.addEventListener('click',function(){
+            count=0;
+            countEl.textContent = count;
+            countEl.style.color="#333";
+        });
+        </script>
+</body>
+</html>
