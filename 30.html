@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+
+        .box{
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            from{
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1{
+            font-size: 60px;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        #msg{
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .btns{
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        button{
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:first-child{
+            background: #2a5298;
+            color: white;
+        }
+
+        button:last-child{
+            background: #e63946;
+            color: white;
+        }
+
+        button:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1 id="count">0</h1>
+        <p id="msg">Start Clicking</p>
+
+        <div class="btns">
+            <button onclick="increase()">Increase</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count =0;
+        let countEl = document.getElementById('count');
+        let msgEl = document.getElementById('msg');
+
+        function increase(){
+            count++;
+            countEl.textContent = count;
+           if(count <=5){
+            msgEl.textContent = "Keep Going!";
+            msgEl.style.color = "Red";
+           } else if(count <=10){
+            msgEl.textContent = "Great Job!";
+            msgEl.style.color = "Orange";
+           } else{
+            msgEl.textContent = "You're on Fire!";
+            msgEl.style.color = "Green";
+           }
+        }
+
+        function reset(){
+            count =0;
+            countEl.textContent = count;
+            msgEl.textContent = "Start Clicking";
+            msgEl.style.color = "Black";
+        }
+    </script>
+
+</body>
+</html>
