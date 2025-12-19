@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: rgb(46, 105, 46);
+            color: #f7f0f0;
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: rgb(34, 78, 34);
+            transform: scale(1.1);
+            
+        }
+        #text {
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body style="text-align:center; margin-top:100px;">
+    <h1 id="text">• “Hello, I am visible, proof that being seen is the first step to being heard.” </h1>
+    <button id="Show">Show Text</button>
+    <button id="Hide">Hide Text</button>
+
+    <script>
+        const txt =document.getElementById("text");
+        const showBtn = document.getElementById("Show");
+        const hideBtn = document.getElementById("Hide");
+
+        showBtn.addEventListener("click", () => {
+            txt.style.display = "block";
+            txt.style.color = "green";
+            txt.style.fontSize = "30px";
+        });
+        hideBtn.addEventListener("click",()=>{
+            txt.style.display = "none";
+        })
+    </script>
+</body>
+</html>
