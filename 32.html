@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: rgb(46, 105, 46);
+            color: #f7f0f0;
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        #btn:hover {
+            background: rgb(34, 78, 34);
+            transform: scale(1.1);
+        }
+        #msg {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 id="count">0</h1>
+        <p id="msg">Hello you count is high!..... </p>
+        <button id="btn">Click Me</button>
+    </div>
+
+    <script>
+     let count =0;
+        const countEl = document.getElementById("count");
+        const msgEl = document.getElementById("msg");
+        const btnEl = document.getElementById("btn");
+        btnEl.addEventListener("click",()=>{
+            count++;
+            countEl.innerText=count;
+            if(count>=5){
+                msgEl.style.display="block";
+                msgEl.style.color="red";
+            }
+            else if (count<=10){
+                msgEl.style.display="block";
+                msgEl.style.color="blue";
+            }
+            else{
+                msgEl.style.display="none";
+            }
+        })
+
+    </script>
+</body>
+</html>
