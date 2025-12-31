@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin: 20px;
+            color: #333;
+            font-weight: bolder;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            margin-top: 20px;
+            list-style-type: square;
+        }
+  li{
+    margin: 5px 0;
+    text-decoration: none;
+    color: #555;
+    font-weight: 800;
+    
+  }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Friends List</h2>
+    <button id="btn">Show Name</button>
+    <ul id="list"></ul>
+    <script>
+        const Friends=["zara","rafy","sara","Talha","Ruskra","Anas","Ammar"];
+        const btn=document.getElementById("btn");
+        const list=document.getElementById("list");
+        btn.addEventListener("click",function(){
+            list.innerHTML="";
+            Friends.forEach(function(friend){
+                const li=document.createElement("li");
+                li.textContent=friend;
+                list.appendChild(li);
+            });
+        })
+    </script>
+</body>
+</html>
