@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Search Bar</title>
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+/* ===== PAGE BG ===== */
+body{
+  background:#2f2f2f;
+}
+
+/* ===== SEARCH WRAPPER ===== */
+.search-wrapper{
+  display:flex;
+  justify-content:center;
+  padding:40px 15px;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box{
+  background:#e6e6e6;
+  padding:20px;
+  border-radius:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 20px;
+  max-width:800px;
+  width:100%;
+}
+
+/* ===== INPUTS ===== */
+.search-box input,
+.search-box select{
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:14px;
+  outline:none;
+  background:#f5f5f5;
+}
+
+/* full width job field */
+.search-box select.job{
+  grid-column:1 / -1;
+}
+
+/* ===== BUTTON ===== */
+.search-box button{
+  grid-column:1 / -1;
+  padding:14px;
+  background:#7b8b4b;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.search-box button:hover{
+  background:#6a7a3f;
+}
+
+/* ===== MOBILE VIEW (LIKE YOUR IMAGE) ===== */
+@media (max-width:768px){
+ /* * ===== SEARCH WRAPPER ===== */ */
+.search-wrapper{
+  display:flex;
+  justify-content:center;
+  padding:40px 15px;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box{
+  background:#e6e6e6;
+  padding:20px;
+  border-radius:10px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px;
+  max-width:800px;
+  width:100%;
+}
+
+/* ===== INPUTS ===== */
+.search-box input,
+.search-box select{
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:14px;
+  outline:none;
+  background:#f5f5f5;
+}
+
+/* full width job field */
+.search-box select.job{
+  grid-column:1 / -1;
+}
+
+/* ===== BUTTON ===== */
+.search-box button{
+  grid-column:1 / -1;
+  padding:14px;
+  background:#7b8b4b;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="search-wrapper">
+  <div class="search-box">
+
+    <input type="text" placeholder="Enter Keyword">
+
+    <select>
+      <option>Select Country</option>
+      <option>Pakistan</option>
+      <option>India</option>
+      <option>USA</option>
+    </select>
+
+    <select class="job">
+      <option>Job Position</option>
+      <option>Agent</option>
+      <option>Helper</option>
+    </select>
+
+    <button>Find Employee</button>
+
+  </div>
+</div>
+
+</body>
+</html>
