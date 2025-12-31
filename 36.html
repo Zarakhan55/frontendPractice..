@@ -1,60 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h2 {
-            margin: 20px;
-            color: #333;
-            font-weight: bolder;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        ul {
-            margin-top: 20px;
-            list-style-type: square;
-        }
-  li{
-    margin: 5px 0;
-    text-decoration: none;
-    color: #555;
-    font-weight: 800;
-    
-  }
-    </style>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Day 43 – Search Friends</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6ff;
+      padding: 30px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input {
+      padding: 10px;
+      margin-right: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 18px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #43a047;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      background: white;
+      padding: 10px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <h2>My Friends List</h2>
-    <button id="btn">Show Name</button>
-    <ul id="list"></ul>
-    <script>
-        const Friends=["zara","rafy","sara","Talha","Ruskra","Anas","Ammar"];
-        const btn=document.getElementById("btn");
-        const list=document.getElementById("list");
-        btn.addEventListener("click",function(){
-            list.innerHTML="";
-            Friends.forEach(function(friend){
-                const li=document.createElement("li");
-                li.textContent=friend;
-                list.appendChild(li);
-            });
-        })
-    </script>
+
+  <h2>Friends List</h2>
+
+  <input type="text" id="addInput" placeholder="Add name">
+  <button id="addBtn">Add</button>
+
+  <br><br>
+
+  <input type="text" id="searchInput" placeholder="Search name">
+
+  <ul id="list"></ul>
+
+  <script>
+    const friends = ["Zara", "Sara", "Talha", "Anas"];
+
+    const addInput = document.getElementById("addInput");
+    const searchInput = document.getElementById("searchInput");
+    const list = document.getElementById("list");
+
+    function showList(data) {
+      list.innerHTML = "";
+      data.forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        list.appendChild(li);
+      });
+    }
+
+    // Initial list
+    showList(friends);
+
+    // Add friend
+    document.getElementById("addBtn").addEventListener("click", () => {
+      const name = addInput.value.trim();
+      if (name) {
+        friends.push(name);
+        addInput.value = "";
+      }
+    });
+
+    // Search friend
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      const filtered = friends.filter(friend =>
+        friend.toLowerCase().includes(value)
+      );
+      showList(filtered);
+    });
+  </script>
+
 </body>
 </html>
